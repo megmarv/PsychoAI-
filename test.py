@@ -1,0 +1,71 @@
+import os
+from fer import FER
+from PIL import Image
+import numpy as np
+
+
+def detect_emotions_in_folder(folder_path):
+    """
+    Detect emotions in images from a specified folder using the FER library.
+
+    Parameters:
+        folder_path (str): Path to the folder containing images.
+
+    Returns:
+        dict: A dictionary with emotions as keys and their counts as values.
+    """
+    # Dictionary to map detected emotions to standard keys
+    emotion_mapping = {
+        'angry': 'disgust',
+        'neutral': 'neutral',
+        'happy': 'happiness',
+        'sad': 'sadness'
+    }
+
+    # Initialize the emotion count dictionary
+    emotions_count = {key: 0 for key in emotion_mapping.values()}
+
+    # Initialize the FER detector
+    detector = FER(mtcnn=True)
+
+    # Ensure the folder exists
+    if not os.path.exists(folder_path):
+        raise FileNotFoundError(f"The folder '{folder_path}' does not exist.")
+
+    # Process each image in the folder
+    for filename in os.listdir(folder_path):
+        filepath = os.path.join(folder_path, filename)
+        try:
+            # Open the image
+            img = Image.open(filepath)
+
+            # Convert to NumPy array
+            img_array = np.array(img)
+
+            # Detect the top emotion
+            detected_emotion, _ = detector.top_emotion(img_array)
+
+            # Map the detected emotion and increment the count
+            if detected_emotion in emotion_mapping:
+                mapped_emotion = emotion_mapping[detected_emotion]
+                emotions_count[mapped_emotion] += 1
+            else:
+                print(f"Detected unknown emotion '{detected_emotion}' in file {filename}")
+
+        except Exception as e:
+            print(f"Error processing {filename}: {e}")
+
+    return emotions_count
+
+
+# Example usage
+if __name__ == "__main__":
+    folder = "FacialExpressions"  # Replace with your folder path
+    try:
+        results = detect_emotions_in_folder(folder)
+        print("Emotion analysis results:")
+        for emotion, count in results.items():
+            print(f"{emotion.capitalize()}: {count}")
+    except FileNotFoundError as e:
+        print(e)
+
