@@ -20,7 +20,30 @@ Two datasets were combined in order to enhance the model performance as each of 
 
 ## FER-2013
 * Contains a total of 35900 images
-* All images are
+* All images are grayscale in 48 * 48 pixels format
+* Contains a test directory and train directory with 7 classes each
+* Highly imbalanced classes
+  * Angry_test    : 958
+  * Happy_test    : 1774
+  * Disgust_test  : 111
+  * Fear_test     : 1024
+  * Neutral_test  : 1233
+  * Sad_test      : 1247
+  * Surprise_test : 831
+  * Angry_train : 3995
+  * Happy_train : 7215
+  * Disgust_train : 436
+  * Fear_train : 4097
+  * Neutral_train : 4965
+  * Sad_train : 4830
+  * Surprise_train : 3171
+
+## Facial Emotion Dataset 
+* Contains a total of 36800 images
+* All images are grayscale in 48 * 48 pixels format
+* Contains a test directory and train directory with 7 classes each
+* Somewhat Imbalanced classes
+  *
 
 ---
 
