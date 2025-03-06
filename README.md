@@ -43,7 +43,22 @@ Two datasets were combined in order to enhance the model performance as each of 
 * All images are grayscale in 48 * 48 pixels format
 * Contains a test directory and train directory with 7 classes each
 * Somewhat Imbalanced classes
-  *
+  * Angry_test : 971
+  * Disgust_test : 567
+  * Fear_test : 911
+  * Happy_test : 1599
+  * Neutral_test : 1259
+  * Sad_test : 1240
+  * Surprise_test : 793
+  * Angry_train : 3880
+  * Disgust_train : 2324
+  * Fear_train : 3654
+  * Happy_train : 6395
+  * Neutral_train : 5036
+  * Sad_train : 4959
+  * Surprise_train : 3169
+ 
+
 
 ---
 
