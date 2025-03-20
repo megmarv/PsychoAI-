@@ -28,6 +28,34 @@ class EmotionDetection(db.Model):
         self.focusedRatio = (focusedStudents / totalStudents) * 100 if totalStudents > 0 else 0
 
     @staticmethod
+    def capture_image_from_webcam():
+        """Capture an image from the webcam and save it to 'routes/face_images'."""
+        image_folder = 'routes/face_images'
+        os.makedirs(image_folder, exist_ok=True)  # Ensure the folder exists
+
+        cap = cv2.VideoCapture(0)  # Open webcam
+        if not cap.isOpened():
+            print("Error: Could not open webcam.")
+            return None
+
+        ret, frame = cap.read()
+        cap.release()  # Release webcam
+
+        if not ret:
+            print("Error: Failed to capture image.")
+            return None
+
+        # Generate a unique filename based on timestamp
+        image_path = os.path.join(image_folder, f"capture_{int(datetime.now().timestamp())}.jpg")
+
+        # Save the image
+        cv2.imwrite(image_path, frame)
+        print(f"Image captured and saved: {image_path}")
+
+        return image_path  # Return the saved image path
+
+
+    @staticmethod
     def extract_faces(image_folder):
         """Extract faces from all images in a given folder and save them into 'face_images'."""
         output_folder = 'face_images'
