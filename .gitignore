@@ -7,6 +7,9 @@ stargan
 StarGAN_dataset
 Student_live_captures
 FER2013_ORIGINAL
+gpu_env
+FER2013_MTCNN_SHA-256
+FER2013_COPY
 FER2013_ORIGINAL.zip
 Augmented_Refined_Hybrid_Dataset.zip
 best_model.h5
