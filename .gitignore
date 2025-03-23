@@ -7,6 +7,7 @@ stargan
 StarGAN_dataset
 Student_live_captures
 FER2013_ORIGINAL
+EfficientNet_Fer2013
 gpu_env
 FER2013_MTCNN_SHA-256
 FER2013_COPY
