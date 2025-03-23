@@ -22,35 +22,37 @@ const Reports = () => {
 
   return (
     <div style={styles.container}>
-      <h2>Reports</h2>
+      <h2 style={styles.heading}>Reports</h2>
 
       {error && <p style={styles.error}>{error}</p>}
 
       {reports.length === 0 ? (
         <p style={styles.noReports}>No reports available.</p>
       ) : (
-        <table style={styles.table}>
-          <thead>
-            <tr>
-              <th style={styles.th}>Report ID</th>
-              <th style={styles.th}>Session ID</th>
-              <th style={styles.th}>Generated At</th>
-              <th style={styles.th}>Summary</th>
-              <th style={styles.th}>Suggestions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {reports.map((report) => (
-              <tr key={report.reportID}>
-                <td style={styles.td}>{report.reportID}</td>
-                <td style={styles.td}>{report.sessionID}</td>
-                <td style={styles.td}>{new Date(report.generatedAt).toLocaleString()}</td>
-                <td style={styles.td}>{report.summary}</td>
-                <td style={styles.td}>{report.suggestions}</td>
+        <div style={styles.tableWrapper}>
+          <table style={styles.table}>
+            <thead>
+              <tr>
+                <th style={styles.th}>Report ID</th>
+                <th style={styles.th}>Session ID</th>
+                <th style={styles.th}>Generated At</th>
+                <th style={styles.th}>Summary</th>
+                <th style={styles.th}>Suggestions</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {reports.map((report) => (
+                <tr key={report.reportID}>
+                  <td style={styles.td}>{report.reportID}</td>
+                  <td style={styles.td}>{report.sessionID}</td>
+                  <td style={styles.td}>{new Date(report.generatedAt).toLocaleString()}</td>
+                  <td style={styles.td}>{report.summary}</td>
+                  <td style={styles.td}>{report.suggestions}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
     </div>
   );
@@ -59,24 +61,40 @@ const Reports = () => {
 const styles = {
   container: {
     padding: '20px',
-    backgroundColor: '#f4f4f4',
+    backgroundColor: '#f4f4f4', // Same background color as the outer theme
     borderRadius: '8px',
-    boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)',
+    boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)', // Slight shadow for a modern touch
+    maxWidth: '1200px',
+    margin: 'auto',
+  },
+  heading: {
+    textAlign: 'center',
+    color: '#2d3b4e', // Darker text for readability
+    marginBottom: '20px',
+  },
+  tableWrapper: {
+    maxHeight: '400px', // Max height for scrollable content
+    overflowY: 'auto', // Enables vertical scrolling
   },
   table: {
     width: '100%',
     borderCollapse: 'collapse',
     marginTop: '20px',
+    backgroundColor: '#ffffff', // White table background for contrast
+    borderRadius: '8px',
+    overflow: 'hidden', // Prevents overflow
   },
   th: {
-    padding: '10px',
+    padding: '12px',
     backgroundColor: '#2d3b4e',
     color: 'white',
     border: '1px solid #ddd',
+    textAlign: 'center',
   },
   td: {
-    padding: '10px',
+    padding: '12px',
     border: '1px solid #ddd',
+    textAlign: 'center',
   },
   error: {
     color: 'red',

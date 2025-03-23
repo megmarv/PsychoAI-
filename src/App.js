@@ -4,8 +4,8 @@ import LoginPage from "./components/LoginPage";
 import SessionPage from "./components/SessionPage";
 import EmotionAnalysisPage from "./components/EmotionAnalysis";
 import ReportPage from "./components/ReportPage";
-import AdminDashboard from "./components/AdminDashboard"; // ✅ Load Admin Dashboard
-import ProtectedRoute from "./components/ProtectedRoute"; 
+import AdminDashboard from "./components/AdminDashboard";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
@@ -19,10 +19,10 @@ function App() {
         <Route path="/emotionanalysis" element={<ProtectedRoute component={EmotionAnalysisPage} />} />
         <Route path="/report" element={<ProtectedRoute component={ReportPage} />} />
 
-        {/* Admin Route - Show Admin Dashboard */}
+        {/* Admin Routes - Protected */}
         <Route path="/admin/*" element={<ProtectedRoute component={AdminDashboard} role="admin" />} />
 
-        {/* Default Route - Redirect to Login */}
+        {/* Default Route */}
         <Route path="*" element={<Navigate to="/login" />} />
       </Routes>
     </Router>

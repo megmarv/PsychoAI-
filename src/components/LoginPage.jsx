@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import '../App.css';
+import "./LoginPage.css"; // ✅ Import CSS
+import logo from "../Logo/Psycho-AI.png"; // ✅ Import Logo
 
 const LoginPage = () => {
   const [username, setUsername] = useState("");
@@ -14,7 +15,7 @@ const LoginPage = () => {
       const response = await fetch("http://localhost:5000/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        credentials: "include",  // ✅ Ensures cookies are sent
+        credentials: "include",
         body: JSON.stringify({ username, password }),
       });
 
@@ -22,12 +23,12 @@ const LoginPage = () => {
       if (!response.ok) throw new Error(data.error);
 
       localStorage.setItem("userID", data.userID);
-      localStorage.setItem("role", data.role); // Store role to check access
+      localStorage.setItem("role", data.role);
 
       if (data.role === "admin") {
-        navigate("/admin"); // Redirect admin users to the dashboard
+        navigate("/admin");
       } else {
-        navigate("/session"); // Redirect regular users to their session page
+        navigate("/session");
       }
     } catch (err) {
       setError(err.message);
@@ -35,22 +36,30 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="login-container">
-      <h2>Login</h2>
-      <input
-        type="text"
-        placeholder="Username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button onClick={handleLogin}>Login</button>
-      {error && <p>{error}</p>}
+    <div className="login-page-container">
+      <div className="login-box-container">
+        {/* ✅ Logo at the top */}
+        <img src={logo} alt="Psycho-AI Logo" className="login-logo" />
+
+        <h2>Login</h2>
+
+        <input
+          type="text"
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          className="login-input-field"
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="login-input-field"
+        />
+        <button onClick={handleLogin} className="login-submit-button">Login</button>
+        {error && <p className="login-error-message">{error}</p>}
+      </div>
     </div>
   );
 };
