@@ -1,0 +1,61 @@
+/* SessionPage.css */
+
+.session-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ecf0f1;
+    color: #2d3b4e;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: "Helvetica Neue", sans-serif;
+    text-align: center;
+  }
+  
+  .session-header {
+    font-size: 2rem;
+    color: #2980b9;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .session-input {
+    width: 80%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #bdc3c7;
+    font-size: 1rem;
+    text-align: center;
+  }
+  
+  .session-button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    margin-top: 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 85%;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .session-button:hover {
+    background-color: #2980b9;
+  }
+  
+  .session-error {
+    color: #e74c3c;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./SessionPage.css"; // ✅ Import CSS file
 
 const SessionPage = () => {
   const [lectureTitle, setLectureTitle] = useState("");
@@ -33,60 +34,16 @@ const SessionPage = () => {
     }
   };
 
-  // Styles (Updated for Centered Inputs)
-  const styles = {
-    sessionContainer: {
-      maxWidth: "600px",
-      margin: "0 auto",
-      padding: "20px",
-      backgroundColor: "#ecf0f1",
-      color: "#2d3b4e",
-      borderRadius: "10px",
-      boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-      fontFamily: "'Helvetica Neue', sans-serif",
-      textAlign: "center",
-    },
-    sessionHeader: { fontSize: "2rem", color: "#2980b9", fontWeight: "600", marginBottom: "20px" },
-    formContainer: {
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-    },
-    sessionInput: {
-      width: "80%", // Set width to make inputs centered
-      padding: "12px",
-      margin: "10px 0",
-      borderRadius: "5px",
-      border: "1px solid #bdc3c7",
-      fontSize: "1rem",
-      textAlign: "center",
-    },
-    sessionButton: {
-      backgroundColor: "#3498db",
-      color: "white",
-      border: "none",
-      padding: "12px 20px",
-      marginTop: "20px",
-      fontSize: "1.2rem",
-      cursor: "pointer",
-      borderRadius: "5px",
-      width: "85%",
-      fontWeight: "bold",
-    },
-    sessionButtonHover: { backgroundColor: "#2980b9" },
-    sessionError: { color: "#e74c3c", fontSize: "1rem", fontWeight: "bold" },
-  };
-
   return (
-    <div style={styles.sessionContainer}>
-      <h2 style={styles.sessionHeader}>Start a Session</h2>
-      <div style={styles.formContainer}>
+    <div className="session-container">
+      <h2 className="session-header">Start a Session</h2>
+      <div className="form-container">
         <input
           type="text"
           placeholder="Enter Lecture Title"
           value={lectureTitle}
           onChange={(e) => setLectureTitle(e.target.value)}
-          style={styles.sessionInput}
+          className="session-input"
         />
         <input
           type="number"
@@ -94,18 +51,13 @@ const SessionPage = () => {
           value={updateInterval}
           onChange={(e) => setUpdateInterval(e.target.value)}
           min="1"
-          style={styles.sessionInput}
+          className="session-input"
         />
-        <button
-          style={styles.sessionButton}
-          onMouseOver={(e) => (e.target.style.backgroundColor = styles.sessionButtonHover.backgroundColor)}
-          onMouseOut={(e) => (e.target.style.backgroundColor = styles.sessionButton.backgroundColor)}
-          onClick={handleStartSession}
-        >
+        <button className="session-button" onClick={handleStartSession}>
           Start Session
         </button>
       </div>
-      {error && <p style={styles.sessionError}>{error}</p>}
+      {error && <p className="session-error">{error}</p>}
     </div>
   );
 };
