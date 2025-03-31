@@ -1,4 +1,7 @@
 from flask import Blueprint, request, jsonify
+
+from database import User
+from database.models import user
 from database.models.report import Report
 from database.models.session import Session
 from database.db_connection import db
@@ -44,15 +47,15 @@ def get_report(sessionID):
 
 @report_bp.route('/all', methods=['GET'])
 def get_all_reports():
-    """Retrieve all session reports."""
-    reports = Report.query.all()
+    """Retrieve all session reports with lecture title and teacher name."""
+    reports = Report.query.join(Session).join(User).all()
     if not reports:
         return jsonify({"error": "No reports found"}), 404
 
     reports_list = [
         {
-            "reportID": report.reportID,
-            "sessionID": report.sessionID,
+            "lectureTitle": report.session.lectureTitle,
+            "teacher": report.session.teacher.username,
             "summary": report.summaryText,
             "suggestions": report.suggestions,
             "generatedAt": report.generatedAt
