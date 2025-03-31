@@ -34,18 +34,18 @@ const Reports = () => {
           <table className="reports-table">
             <thead>
               <tr>
-                <th>Report ID</th>
-                <th>Session ID</th>
+                <th>Lecture Title</th>
+                <th>Teacher</th>
                 <th>Generated At</th>
                 <th>Summary</th>
                 <th>Suggestions</th>
               </tr>
             </thead>
             <tbody>
-              {reports.map((report) => (
-                <tr key={report.reportID}>
-                  <td>{report.reportID}</td>
-                  <td>{report.sessionID}</td>
+              {reports.map((report, index) => (
+                <tr key={index}>
+                  <td>{report.lectureTitle}</td>
+                  <td>{report.teacher}</td>
                   <td>{new Date(report.generatedAt).toLocaleString()}</td>
                   <td>{report.summary}</td>
                   <td>{report.suggestions}</td>

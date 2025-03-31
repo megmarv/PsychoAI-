@@ -11,21 +11,24 @@
 }
 
 .reports-heading {
+  padding-top: 50px;
+  font-size: 60px;
   text-align: center;
-  color: #2d3b4e;
+  color: #000000;
   margin-bottom: 20px;
 }
 
 .table-wrapper {
+  align-items: center;
   width: 100%; /* ✅ Controls table width */
-  max-width: 1200px; /* ✅ Prevents it from being too wide */
+  max-width: 1500px; /* ✅ Prevents it from being too wide */
   overflow-x: auto; /* Enables horizontal scrolling if needed */
 }
 
 .reports-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .reports-table th,
