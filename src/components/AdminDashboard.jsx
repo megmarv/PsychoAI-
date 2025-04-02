@@ -4,6 +4,7 @@ import AdminNavbar from './AdminNavbar';
 import UserInfo from './UserInfo';
 import Reports from './Reports';
 import CheersGif from './dashpic.gif';
+import Footer from './Footer'; // Add Footer import
 import './AdminDashboard.css';
 
 const AdminDashboard = () => {
@@ -18,7 +19,7 @@ const AdminDashboard = () => {
             path="/" 
             element={
               <div className="admin-home">
-                <h2>Welcome to Admin Dashboard</h2>
+                <h1>Welcome to Admin Dashboard</h1>
                 <img src={CheersGif} alt="Celebration" className="admin-panel-gif" />
               </div>
             } 
@@ -27,6 +28,8 @@ const AdminDashboard = () => {
           <Route path="reports" element={<Reports />} />
         </Routes>
       </div>
+      
+      <Footer /> {/* Added Footer component */}
     </div>
   );
 };
