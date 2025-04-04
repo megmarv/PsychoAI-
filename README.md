@@ -28,9 +28,17 @@ Two datasets were combined in order to enhance the model performance as each of 
 The same dataset, with a different method of augmentation was used for this model. An attempt was made at training the model, but unsuccessful due to lack of computing requirements. Make sure to have an actively working GPU of at least 8GB and CPU of at least 4.00 HZ before attempting to train this model. The models already existing metrics were considered for the comparison.
 
 * Adding MTCNN Augmentation : <a href="https://github.com/megmarv/PsychoAI-/blob/Emotion-Identification3/Datasetprep_ResNET%2BVGG.ipynb">Datasetprep_ResNET+VGG.ipynb</a>
-* Trained model : <a href="https://github.com/megmarv/PsychoAI-/blob/Emotion-Identification3/VGG16.ipynb">VGG16.ipynb</a>
+* model : <a href="https://github.com/megmarv/PsychoAI-/blob/Emotion-Identification3/VGG16.ipynb">VGG16.ipynb</a>
  
 # EfficientNet-B7
+
+A separate dataset ( FER-2013 variation ) dedicated for EfficientNet models was used for this model. Although an attempt was made at training the model, it was unsuccessful given the same reason for the VGG-16 variant. These models require heavy computational resources due to its complexity in architecture. The models already existing metrics were considered for the comparison.
+
+* model : <a href="https://github.com/megmarv/PsychoAI-/blob/Emotion-Identification3/EfficientNet-B7.ipynb">EfficientNet-B7.ipynb</a>
+
+# Credits
+
+Please make sure to credit my work if the custom CNN / Dataset cleaning techniques are used.
 
 ---
 
